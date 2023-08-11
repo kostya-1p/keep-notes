@@ -10,6 +10,8 @@ services:
             dockerfile: Dockerfile
         image: ${DOCKER_NAME}-fpm-image
         container_name: ${DOCKER_NAME}-fpm
+        environment:
+            PHP_IDE_CONFIG: serverName=Docker
         restart: unless-stopped
         working_dir: /var/www/
         volumes:
