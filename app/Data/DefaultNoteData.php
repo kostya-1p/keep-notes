@@ -2,12 +2,14 @@
 
 namespace App\Data;
 
+use App\Models\DefaultNote;
 use Carbon\Carbon;
 use Spatie\LaravelData\Attributes\MapName;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Attributes\WithTransformer;
 use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Lazy;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 use Spatie\LaravelData\Transformers\DateTimeInterfaceTransformer;
 
@@ -25,6 +27,20 @@ class DefaultNoteData extends Data
         #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d')]
         #[WithTransformer(DateTimeInterfaceTransformer::class, format: 'Y-m-d')]
         public Carbon $updatedAt,
+        public UserData|Lazy $user,
     ) {
+    }
+
+    public static function fromModel(DefaultNote $note): self
+    {
+        return new self(
+            $note->id,
+            $note->title,
+            $note->text,
+            $note->user_id,
+            $note->created_at,
+            $note->updated_at,
+            Lazy::create(fn() => UserData::from($note->user)),
+        );
     }
 }
