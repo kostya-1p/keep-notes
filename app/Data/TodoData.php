@@ -13,6 +13,7 @@ class TodoData extends Data
 {
     public function __construct(
         public ?int $id,
+        public int $position,
         public bool $checked,
         public ?string $text,
         public bool $subtask,
@@ -25,6 +26,7 @@ class TodoData extends Data
     {
         return new self(
             $todo->id,
+            $todo->position,
             $todo->checked,
             $todo->text,
             $todo->subtask,

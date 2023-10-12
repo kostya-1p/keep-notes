@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Todo whereText($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Todo whereTodoNoteId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Todo whereUpdatedAt($value)
+ * @property int $position Позиция в списке задач
+ * @method static \Illuminate\Database\Eloquent\Builder|Todo wherePosition($value)
  * @mixin \Eloquent
  */
 class Todo extends Model
@@ -34,9 +36,11 @@ class Todo extends Model
     use HasFactory;
 
     protected $fillable = [
+        'position',
         'checked',
         'text',
-        'subtask'
+        'subtask',
+        'todo_note_id'
     ];
 
     public function note(): BelongsTo
