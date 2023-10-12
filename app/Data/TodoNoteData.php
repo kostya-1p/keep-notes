@@ -22,7 +22,7 @@ class TodoNoteData extends Data implements NoteDataInterface
         public readonly ?Carbon $updatedAt,
         #[DataCollectionOf(TodoData::class)]
         public DataCollection|Lazy|null $todos,
-        public UserData|Lazy $user,
+        public UserData|Lazy|null $user,
     ) {
     }
 
@@ -46,7 +46,7 @@ class TodoNoteData extends Data implements NoteDataInterface
 
     public function getContent(): array
     {
-        return $this->todos->items();
+        return !is_null($this->todos) ? $this->todos->items() : [];
     }
 
     public function getUserId(): int

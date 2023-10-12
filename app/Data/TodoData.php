@@ -17,8 +17,8 @@ class TodoData extends Data
         public bool $checked,
         public ?string $text,
         public bool $subtask,
-        public int $todoNoteId,
-        public TodoNoteData|Lazy $todoNote,
+        public ?int $todoNoteId,
+        public TodoNoteData|Lazy|null $todoNote,
     ) {
     }
 
