@@ -41,6 +41,6 @@ class Todo extends Model
 
     public function note(): BelongsTo
     {
-        return $this->belongsTo(TodoNote::class);
+        return $this->belongsTo(TodoNote::class, 'todo_note_id');
     }
 }
