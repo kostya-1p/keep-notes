@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('default_notes', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable()->comment('Заголовок заметки');
-            $table->text('text')->comment('Текст заметки');
+            $table->text('text')->nullable()->comment('Текст заметки');
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });

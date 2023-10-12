@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
             $table->boolean('checked')->comment('Выполнена ли задача');
-            $table->text('text')->comment('Текст задачи');
+            $table->text('text')->nullable()->comment('Текст задачи');
             $table->boolean('subtask')->comment('Является ли позадачей');
             $table->foreignId('todo_note_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();

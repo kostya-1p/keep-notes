@@ -12,7 +12,7 @@ use Spatie\LaravelData\Lazy;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 
 #[MapName(SnakeCaseMapper::class)]
-class TodoNoteData extends Data
+class TodoNoteData extends Data implements NoteDataInterface
 {
     public function __construct(
         public ?int $id,
@@ -37,5 +37,20 @@ class TodoNoteData extends Data
             Lazy::create(fn() => TodoData::collection($note->todos)),
             Lazy::create(fn() => UserData::from($note->user)),
         );
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function getContent(): array
+    {
+        return $this->todos->items();
+    }
+
+    public function getUserId(): int
+    {
+        return $this->userId;
     }
 }

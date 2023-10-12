@@ -14,19 +14,19 @@ use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 use Spatie\LaravelData\Transformers\DateTimeInterfaceTransformer;
 
 #[MapName(SnakeCaseMapper::class)]
-class DefaultNoteData extends Data
+class DefaultNoteData extends Data implements NoteDataInterface
 {
     public function __construct(
         public ?int $id,
         public ?string $title,
-        public string $text,
+        public ?string $text,
         public int $userId,
         #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d')]
         #[WithTransformer(DateTimeInterfaceTransformer::class, format: 'Y-m-d')]
-        public Carbon $createdAt,
+        public ?Carbon $createdAt,
         #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d')]
         #[WithTransformer(DateTimeInterfaceTransformer::class, format: 'Y-m-d')]
-        public Carbon $updatedAt,
+        public ?Carbon $updatedAt,
         public UserData|Lazy $user,
     ) {
     }
@@ -42,5 +42,20 @@ class DefaultNoteData extends Data
             $note->updated_at,
             Lazy::create(fn() => UserData::from($note->user)),
         );
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function getContent(): array
+    {
+        return is_null($this->text) ? [] : [$this->text];
+    }
+
+    public function getUserId(): int
+    {
+        return $this->userId;
     }
 }

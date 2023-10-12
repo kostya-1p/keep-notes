@@ -14,7 +14,7 @@ class TodoData extends Data
     public function __construct(
         public ?int $id,
         public bool $checked,
-        public string $text,
+        public ?string $text,
         public bool $subtask,
         public int $todoNoteId,
         public TodoNoteData|Lazy $todoNote,
