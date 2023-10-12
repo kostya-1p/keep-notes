@@ -27,7 +27,7 @@ class DefaultNoteData extends Data implements NoteDataInterface
         #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d')]
         #[WithTransformer(DateTimeInterfaceTransformer::class, format: 'Y-m-d')]
         public ?Carbon $updatedAt,
-        public UserData|Lazy $user,
+        public UserData|Lazy|null $user,
     ) {
     }
 
