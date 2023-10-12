@@ -34,6 +34,7 @@ class TodoNote extends Model
 
     protected $fillable = [
         'title',
+        'user_id'
     ];
 
     public function todos(): HasMany

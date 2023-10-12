@@ -34,6 +34,7 @@ class DefaultNote extends Model
     protected $fillable = [
         'title',
         'text',
+        'user_id'
     ];
 
     public function user(): BelongsTo

@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\Repository\DefaultNoteDatabaseRepository;
+use App\Repository\NoteRepositoryInterface;
+use App\Repository\TodoNoteDatabaseRepository;
+use App\Services\Notes\DefaultNoteService;
+use App\Services\Notes\TodoNoteService;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Sanctum\Sanctum;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,7 +16,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->when(DefaultNoteService::class)
+            ->needs(NoteRepositoryInterface::class)
+            ->give(DefaultNoteDatabaseRepository::class);
+
+        $this->app->when(TodoNoteService::class)
+            ->needs(NoteRepositoryInterface::class)
+            ->give(TodoNoteDatabaseRepository::class);
     }
 
     /**
@@ -20,6 +30,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Sanctum::ignoreMigrations();
+        //
     }
 }
