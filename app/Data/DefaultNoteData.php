@@ -51,7 +51,7 @@ class DefaultNoteData extends Data implements NoteDataInterface
 
     public function getContent(): array
     {
-        return is_null($this->text) ? [] : [$this->text];
+        return (is_null($this->text) || $this->text === '') ? [] : [$this->text];
     }
 
     public function getUserId(): int
