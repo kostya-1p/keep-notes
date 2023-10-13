@@ -25,6 +25,12 @@ class TodoNoteService implements NoteServiceInterface
         ) {
             throw new NoteCreateException('Empty note discarded');
         }
+
+        if (!$this->isValidTodoPositions($this->getPositionsFrequency($noteData->getContent()))) {
+            throw new NoteCreateException('Note positions is not valid!');
+        }
+
+        $this->noteRepository->store($noteData);
     }
 
     private function containsTodos(array $todos): bool
@@ -47,5 +53,39 @@ class TodoNoteService implements NoteServiceInterface
         }, 0);
 
         return $emptyCount === count($todos);
+    }
+
+    /** @param TodoData[] $todos */
+    private function getPositionsFrequency(array $todos): array
+    {
+        if (empty($todos)) {
+            return [];
+        }
+
+        $highestPosition = max(array_map(fn(TodoData $todo): int => $todo->position, $todos));
+        $frequency = [];
+        foreach (range(1, $highestPosition) as $position) {
+            $frequency[$position] = 0;
+        }
+
+        foreach ($todos as $todo) {
+            if (!array_key_exists($todo->position, $frequency)) {
+                $frequency[$todo->position] = 1;
+            } else {
+                $frequency[$todo->position]++;
+            }
+        }
+
+        return $frequency;
+    }
+
+    private function isValidTodoPositions(array $frequency): bool
+    {
+        foreach ($frequency as $item) {
+            if ($item !== 1) {
+                return false;
+            }
+        }
+        return true;
     }
 }
