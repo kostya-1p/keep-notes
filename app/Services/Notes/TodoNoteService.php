@@ -30,6 +30,10 @@ class TodoNoteService implements NoteServiceInterface
             throw new NoteCreateException('Note positions is not valid!');
         }
 
+        if ($this->getFirstPositionTodo($noteData->getContent())?->subtask) {
+            throw new NoteCreateException('First note can not be a subtask!');
+        }
+
         $this->noteRepository->store($noteData);
     }
 
@@ -87,5 +91,20 @@ class TodoNoteService implements NoteServiceInterface
             }
         }
         return true;
+    }
+
+    /** @param TodoData[] $todos */
+    private function getFirstPositionTodo(array $todos): ?TodoData
+    {
+        if (empty($todos)) {
+            return null;
+        }
+
+        foreach ($todos as $todo) {
+            if ($todo->position === 1) {
+                return $todo;
+            }
+        }
+        throw new NoteCreateException('Invalid note positions!');
     }
 }
