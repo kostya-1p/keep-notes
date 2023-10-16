@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-})->middleware(['auth', 'auth.session']);
+})->middleware(['auth', 'auth.session'])->name('main');
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('/login', 'login')->name('login');
