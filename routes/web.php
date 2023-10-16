@@ -14,10 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware(['auth', 'auth.session'])->group(function () {
+    Route::get('/', function () {
+        return view('home');
+    })->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware(['auth', 'auth.session'])->name('main');
+    Route::get('/secondary', function () {
+        return view('secondary');
+    })->name('secondary');
+});
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('/login', 'login')->name('login');
