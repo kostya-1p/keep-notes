@@ -8,6 +8,11 @@ class AuthController extends Controller
 {
     public function login(LoginRequest $request)
     {
+        return response()->json('yeyash');
+    }
+
+    public function getLoginPage()
+    {
 
     }
 }
