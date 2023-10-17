@@ -9,5 +9,5 @@ interface AuthServiceInterface
 {
     public function login(LoginData $loginData): bool;
 
-    public function register(UserData $user): bool;
+    public function register(UserData $user, string $password): bool;
 }

@@ -4,11 +4,16 @@ namespace App\Services\Auth;
 
 use App\Data\Auth\LoginData;
 use App\Data\UserData;
+use App\Repository\User\UserRepositoryInterface;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Auth;
 
 class AuthSessionService implements AuthServiceInterface
 {
+    public function __construct(protected UserRepositoryInterface $userRepository)
+    {
+    }
+
     public function login(LoginData $loginData): bool
     {
         $credentials = $this->getUserCredentials($loginData);
@@ -44,8 +49,14 @@ class AuthSessionService implements AuthServiceInterface
         return $credentials;
     }
 
-    public function register(UserData $user): bool
+    public function register(UserData $user, string $password): bool
     {
+        $storedUser = $this->userRepository->store($user, $password);
+        $credentials = ['email' => $storedUser->email, 'password' => $password];
 
+        if ($isLogged = Auth::attempt($credentials, true)) {
+            request()->session()->regenerate();
+        }
+        return $isLogged;
     }
 }
