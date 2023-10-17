@@ -18,7 +18,7 @@ class AuthController extends Controller
         $loginData = LoginData::from($request->validated());
         $isLogged = $this->authService->login($loginData);
 
-        return $isLogged ? redirect(route('home'))
+        return $isLogged ? redirect()->intended(route('home'))
             : redirect(route('login.page'))->withErrors(['login_fail' => 'User not found!']);
     }
 
