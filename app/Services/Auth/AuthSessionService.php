@@ -3,6 +3,7 @@
 namespace App\Services\Auth;
 
 use App\Data\Auth\LoginData;
+use App\Data\UserData;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,5 +42,10 @@ class AuthSessionService implements AuthServiceInterface
 
         $credentials['email'] = $loginData->email;
         return $credentials;
+    }
+
+    public function register(UserData $user): bool
+    {
+
     }
 }
