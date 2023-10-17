@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Data\LoginData;
+use App\Data\Auth\LoginData;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Services\Auth\AuthServiceInterface;
 use Illuminate\Contracts\View\View;
 
@@ -25,5 +26,10 @@ class AuthController extends Controller
     public function getLoginPage(): View
     {
         return view('auth.login');
+    }
+
+    public function register(RegisterRequest $request)
+    {
+
     }
 }

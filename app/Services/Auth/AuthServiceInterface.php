@@ -2,7 +2,7 @@
 
 namespace App\Services\Auth;
 
-use App\Data\LoginData;
+use App\Data\Auth\LoginData;
 
 interface AuthServiceInterface
 {

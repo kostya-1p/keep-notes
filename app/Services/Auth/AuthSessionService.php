@@ -2,7 +2,7 @@
 
 namespace App\Services\Auth;
 
-use App\Data\LoginData;
+use App\Data\Auth\LoginData;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Auth;
 
