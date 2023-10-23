@@ -12,7 +12,10 @@ class UserData extends Data
 {
     public function __construct(
         public ?int $id,
-        public string $name,
+        public string $firstName,
+        public string $lastName,
+        public string $middleName,
+        public string $username,
         public string $email,
         public readonly ?Carbon $emailVerifiedAt,
         public readonly ?Carbon $createdAt,

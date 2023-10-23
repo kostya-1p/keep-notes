@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Repository\DefaultNoteDatabaseRepository;
 use App\Repository\NoteRepositoryInterface;
 use App\Repository\TodoNoteDatabaseRepository;
+use App\Services\Auth\AuthServiceInterface;
+use App\Services\Auth\AuthSessionService;
 use App\Services\Notes\DefaultNoteService;
 use App\Services\Notes\TodoNoteService;
 use Illuminate\Support\ServiceProvider;
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->when(TodoNoteService::class)
             ->needs(NoteRepositoryInterface::class)
             ->give(TodoNoteDatabaseRepository::class);
+
+        $this->app->bind(AuthServiceInterface::class, AuthSessionService::class);
     }
 
     /**
