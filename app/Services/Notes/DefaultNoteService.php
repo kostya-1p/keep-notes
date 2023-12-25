@@ -5,6 +5,7 @@ namespace App\Services\Notes;
 use App\Data\NoteDataInterface;
 use App\Exceptions\NoteCreateException;
 use App\Repository\NoteRepositoryInterface;
+use Spatie\LaravelData\DataCollection;
 
 class DefaultNoteService implements NoteServiceInterface
 {
@@ -23,5 +24,10 @@ class DefaultNoteService implements NoteServiceInterface
         }
 
         $this->noteRepository->store($noteData);
+    }
+
+    public function getAll(): DataCollection
+    {
+        return $this->noteRepository->getAll();
     }
 }

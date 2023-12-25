@@ -2,8 +2,10 @@
 
 namespace App\Repository;
 
+use App\Data\DefaultNoteData;
 use App\Data\NoteDataInterface;
 use App\Models\DefaultNote;
+use Spatie\LaravelData\DataCollection;
 
 class DefaultNoteDatabaseRepository implements NoteRepositoryInterface
 {
@@ -21,5 +23,11 @@ class DefaultNoteDatabaseRepository implements NoteRepositoryInterface
             'text' => $text,
             'user_id' => $noteData->getUserId(),
         ];
+    }
+
+    /** @return DataCollection<DefaultNoteData> */
+    public function getAll(): DataCollection
+    {
+        return DefaultNoteData::collection(DefaultNote::all());
     }
 }

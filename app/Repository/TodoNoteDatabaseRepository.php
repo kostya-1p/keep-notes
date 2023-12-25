@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Data\NoteDataInterface;
+use App\Data\TodoNoteData;
 use App\Models\TodoNote;
+use Spatie\LaravelData\DataCollection;
 
 class TodoNoteDatabaseRepository implements NoteRepositoryInterface
 {
@@ -17,5 +19,11 @@ class TodoNoteDatabaseRepository implements NoteRepositoryInterface
         foreach ($noteData->getContent() as $todo) {
             $todoNote->todos()->create($todo->toArray());
         }
+    }
+
+    public function getAll(): DataCollection
+    {
+        // TODO: Implement getAll() method.
+        return TodoNoteData::collection([]);
     }
 }
