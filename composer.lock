@@ -2058,12 +2058,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kostya-1p/jwt-auth.git",
-                "reference": "3be66168fc261f0f0fabfac5827e9e99c1185e8d"
+                "reference": "dcb9bace7163756df6d5cca29fba23a4702776fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kostya-1p/jwt-auth/zipball/3be66168fc261f0f0fabfac5827e9e99c1185e8d",
-                "reference": "3be66168fc261f0f0fabfac5827e9e99c1185e8d",
+                "url": "https://api.github.com/repos/kostya-1p/jwt-auth/zipball/dcb9bace7163756df6d5cca29fba23a4702776fe",
+                "reference": "dcb9bace7163756df6d5cca29fba23a4702776fe",
                 "shasum": ""
             },
             "require": {
@@ -2080,6 +2080,13 @@
                 "phpunit/phpunit": "^11.0"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Kostyap\\JwtAuth\\Providers\\JwtAuthServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Kostyap\\JwtAuth\\": "src/"
@@ -2094,7 +2101,7 @@
                 "issues": "https://github.com/kostya-1p/jwt-auth/issues",
                 "source": "https://github.com/kostya-1p/jwt-auth/tree/0.x"
             },
-            "time": "2024-03-27T06:19:19+00:00"
+            "time": "2024-03-29T08:57:26+00:00"
         },
         {
             "name": "laravel/framework",
