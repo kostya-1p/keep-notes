@@ -7,10 +7,15 @@ use App\Http\Requests\LoginApiRequest;
 use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Kostyap\JwtAuth\Helpers\TokenResponseSetter;
 use Kostyap\JwtAuth\Jwt\Data\TokenPair;
 
 class AuthApiController extends Controller
 {
+    public function __construct(private TokenResponseSetter $tokenResponseSetter)
+    {
+    }
+
     public function login(LoginApiRequest $request): Response
     {
         try {
@@ -24,10 +29,7 @@ class AuthApiController extends Controller
             return new Response(['error' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
         }
 
-        return new Response([
-            'access_token' => $tokenPair->accessToken,
-            'refresh_token' => $tokenPair->refreshToken
-        ]);
+        return $this->tokenResponseSetter->setResponse($tokenPair);
     }
 
     public function me(): Response
@@ -37,7 +39,6 @@ class AuthApiController extends Controller
             return new Response(['error' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
         }
 
-        //TODO: Use a http resource instead of an explicit JSON model
         return new Response($user);
     }
 
@@ -50,9 +51,6 @@ class AuthApiController extends Controller
             return new Response(['error' => $e->getMessage()], Response::HTTP_UNAUTHORIZED);
         }
 
-        return new Response([
-            'access_token' => $tokenPair->accessToken,
-            'refresh_token' => $tokenPair->refreshToken
-        ]);
+        return $this->tokenResponseSetter->setResponse($tokenPair);
     }
 }

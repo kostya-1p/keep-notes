@@ -2058,12 +2058,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kostya-1p/jwt-auth.git",
-                "reference": "75b885ddce9aa4919e470aac96e58192130b6521"
+                "reference": "7f1ea596a7ee1f61a4103d3192a8c8a55e40fc6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kostya-1p/jwt-auth/zipball/75b885ddce9aa4919e470aac96e58192130b6521",
-                "reference": "75b885ddce9aa4919e470aac96e58192130b6521",
+                "url": "https://api.github.com/repos/kostya-1p/jwt-auth/zipball/7f1ea596a7ee1f61a4103d3192a8c8a55e40fc6f",
+                "reference": "7f1ea596a7ee1f61a4103d3192a8c8a55e40fc6f",
                 "shasum": ""
             },
             "require": {
@@ -2101,7 +2101,7 @@
                 "issues": "https://github.com/kostya-1p/jwt-auth/issues",
                 "source": "https://github.com/kostya-1p/jwt-auth/tree/0.x"
             },
-            "time": "2024-03-29T11:48:03+00:00"
+            "time": "2024-04-01T11:18:26+00:00"
         },
         {
             "name": "laravel/framework",
