@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fef219cd210c289897c4e882698371c4",
+    "content-hash": "4c780f045282539e75bb758a7a5bb3ca",
     "packages": [
         {
             "name": "amphp/amp",
@@ -2054,16 +2054,16 @@
         },
         {
             "name": "kostya-p/jwt-auth",
-            "version": "0.x-dev",
+            "version": "dev-0.x-fix",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kostya-1p/jwt-auth.git",
-                "reference": "6549d8972d4ad164fac6ba8dcbfd8c35c463334e"
+                "reference": "89329ac96563bd65907b95e359f108a1e2c9319a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kostya-1p/jwt-auth/zipball/6549d8972d4ad164fac6ba8dcbfd8c35c463334e",
-                "reference": "6549d8972d4ad164fac6ba8dcbfd8c35c463334e",
+                "url": "https://api.github.com/repos/kostya-1p/jwt-auth/zipball/89329ac96563bd65907b95e359f108a1e2c9319a",
+                "reference": "89329ac96563bd65907b95e359f108a1e2c9319a",
                 "shasum": ""
             },
             "require": {
@@ -2099,9 +2099,9 @@
             "description": "JSON Web Token Authentication",
             "support": {
                 "issues": "https://github.com/kostya-1p/jwt-auth/issues",
-                "source": "https://github.com/kostya-1p/jwt-auth/tree/0.x"
+                "source": "https://github.com/kostya-1p/jwt-auth/tree/0.x-fix"
             },
-            "time": "2024-04-01T13:53:25+00:00"
+            "time": "2024-06-17T06:57:36+00:00"
         },
         {
             "name": "laravel/framework",

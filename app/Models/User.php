@@ -6,7 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Kostyap\JwtAuth\Jwt\JWTSubject;
+use Kostyap\JwtAuth\JwtServices\JWTSubject;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
